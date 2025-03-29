@@ -15,5 +15,6 @@ public class AuthRequest {
 	private String password;
 	private String lang;
 	private String type;
+	private String action;
 
 }

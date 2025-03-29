@@ -11,7 +11,7 @@ import com.shoppingonline.base.BaseController;
 import com.shoppingonline.utils.UserUtil;
 
 @RestController
-public class ExampleController extends BaseController<ExampleModel, String>{
+public class ExampleController extends BaseController<ExampleModel, ExampleModel>{
 	
 	private MessageSource messageSource;
 	
@@ -27,8 +27,8 @@ public class ExampleController extends BaseController<ExampleModel, String>{
 	
     @GetMapping("/message")
     public String getMessage() {
-    	setUser(userUtil.getUser().get());
-        Locale locale = new Locale(getUser().getLang());
+    	setUser(userUtil.getUser());
+        Locale locale = new Locale(getUser().get().getLang());
         return messageSource.getMessage("welcome.message", null, locale);
     }
 	

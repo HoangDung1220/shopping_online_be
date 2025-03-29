@@ -1,13 +1,9 @@
 package com.shoppingonline.api.auth;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
-@Setter
-@Getter
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
 public class AuthErrorItem {
 	private String errorItem;

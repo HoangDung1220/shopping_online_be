@@ -17,11 +17,11 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "authorities")
-@NoArgsConstructor
+@Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@Builder
 public class AuthorityEntity extends BaseModel{
 
 	@Id

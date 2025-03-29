@@ -1,5 +1,6 @@
 package com.shoppingonline.api.auth;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -13,7 +14,11 @@ import lombok.Setter;
 @Setter
 public class AuthResponse {
 	
-	private String status;
+	private int status;
 	private String token;
-	private List<AuthErrorItem> errorItems;
+	private List<AuthErrorItem> errorItems = new ArrayList<>();
+	
+	public void addErrorItems(AuthErrorItem errorItem) {
+		this.errorItems.add(errorItem);
+	}
 }

@@ -1,6 +1,5 @@
 package com.shoppingonline.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,12 +16,12 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	private final CustomUserDetailsService customUserDetailsService;
 	private final PasswordEncoder passwordEncoder;
 	
-	@Autowired
 	private MessageUtil messageUtil;
 	
-	public CustomAuthenticationProvider(CustomUserDetailsService customUserDetailsService, PasswordEncoder passwordEncoder) {
+	public CustomAuthenticationProvider(CustomUserDetailsService customUserDetailsService, PasswordEncoder passwordEncoder, MessageUtil messageUtil) {
 		this.customUserDetailsService = customUserDetailsService;
 		this.passwordEncoder = passwordEncoder;
+		this.messageUtil = messageUtil;
 	}
 	
 	@Override

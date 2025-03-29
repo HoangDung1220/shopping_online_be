@@ -33,11 +33,12 @@ public class UserEntity extends BaseModel{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(unique = true, nullable = false)
+	@Column(unique = true, nullable = false, length = 50)
 	private String email;
 	
 	private String password;
 	
+	@Column(length = 2)
 	private String lang;
 	
 	private boolean enabled;

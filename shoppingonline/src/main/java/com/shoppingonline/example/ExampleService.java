@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.shoppingonline.base.BaseService;
 
 @Service
-public class ExampleService implements BaseService<ExampleModel, String>{
+public class ExampleService implements BaseService<ExampleModel, ExampleModel>{
 	
 	private ExampleRepository exampleRepository;
 	
@@ -16,7 +16,7 @@ public class ExampleService implements BaseService<ExampleModel, String>{
 	}
 
 	@Override
-	public boolean prepare(ExampleModel model) {
+	public boolean prepare(ExampleModel model, ExampleModel model1) {
 		// TODO Auto-generated method stub
 		return false;
 	}

@@ -3,7 +3,6 @@ package com.shoppingonline.security;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,11 +14,14 @@ import com.shoppingonline.utils.MessageUtil;
 @Component
 public class CustomUserDetailsService implements UserDetailsService {
 
-	@Autowired
 	private UserRepository userRepository;
 	
-	@Autowired
 	private MessageUtil messageUtil;
+
+	public CustomUserDetailsService(UserRepository userRepository, MessageUtil messageUtil) {
+		this.userRepository = userRepository;
+		this.messageUtil = messageUtil;
+	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

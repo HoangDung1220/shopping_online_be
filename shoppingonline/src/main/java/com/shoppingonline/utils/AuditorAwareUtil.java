@@ -6,18 +6,23 @@ import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
 
 import com.shoppingonline.constant.Constant;
+import com.shoppingonline.security.UserDTO;
+
+import lombok.RequiredArgsConstructor;
 
 @Component
+@RequiredArgsConstructor
 public class AuditorAwareUtil implements AuditorAware<String> {
 
-	private UserUtil userUtil;
-
-	public AuditorAwareUtil(UserUtil userUtil) {
-		this.userUtil = userUtil;
-	}
+	private final UserUtil userUtil;
 	
 	@Override
 	public Optional<String> getCurrentAuditor() {
-		return userUtil.getUser().map(user -> Optional.ofNullable(user.getEmail()).orElse(Constant.BLANK));
-	}
+	    Optional<UserDTO> userOpt = userUtil.getUser();
+	    
+	    if (userOpt.isPresent()) {
+	        return Optional.ofNullable(userOpt.get().getEmail()).or(() -> Optional.of(Constant.SYSTEM));
+	    }
+	    
+	    return Optional.of(Constant.SYSTEM);	}
 }

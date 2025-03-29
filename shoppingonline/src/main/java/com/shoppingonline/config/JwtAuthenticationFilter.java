@@ -2,7 +2,6 @@ package com.shoppingonline.config;
 
 import java.io.IOException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -21,14 +20,17 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter{
-	
-	@Autowired
+
+	private static final String AUTHORIZATION = "Authorization";
+
 	private JwtUtil jwtUtil;
 	
-	@Autowired
 	private CustomUserDetailsService userDetailService;
-	
-	private static final String AUTHORIZATION = "Authorization";
+		
+	public JwtAuthenticationFilter(JwtUtil jwtUtil, CustomUserDetailsService userDetailService) {
+		this.jwtUtil = jwtUtil;
+		this.userDetailService = userDetailService;
+	}
 	
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
