@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.shoppingonline.base.BaseController;
 import com.shoppingonline.utils.JwtUtil;
-import com.shoppingonline.utils.UserUtil;
 
 @RestController
 @RequestMapping("/auth")
@@ -24,12 +23,11 @@ public class AuthController extends BaseController<AuthRequest, AuthResponse> {
     
     private PasswordEncoder passwordEncoder;
             
-    public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtil, PasswordEncoder passwordEncoder, AuthService authService, UserUtil userUtil) {
-    	super(authService, userUtil);
+    public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtil, PasswordEncoder passwordEncoder, AuthService authService) {
+    	super(authService);
     	this.authenticationManager = authenticationManager;
     	this.jwtUtil = jwtUtil;
     	this.passwordEncoder = passwordEncoder;
-    	this.setUser(userUtil.getUser());
     }
 
 	@PostMapping("/register")

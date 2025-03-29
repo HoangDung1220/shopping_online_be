@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.shoppingonline.base.BaseService;
 
 @Service
-public class ExampleService implements BaseService<ExampleModel, ExampleModel>{
+public class ExampleService extends BaseService<ExampleModel, ExampleModel>{
 	
 	private ExampleRepository exampleRepository;
 	

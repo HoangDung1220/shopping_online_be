@@ -14,7 +14,7 @@ import com.shoppingonline.security.UserEntity;
 import com.shoppingonline.utils.MessageUtil;
 
 @Service
-public class AuthService implements BaseService<AuthRequest, AuthResponse>{
+public class AuthService extends BaseService<AuthRequest, AuthResponse>{
 	
 	private static final String EMAIL = "email";
 	private static final String PASSWORD = "password";
@@ -122,11 +122,6 @@ public class AuthService implements BaseService<AuthRequest, AuthResponse>{
 		}
 		
 		return check;
-	}
-
-	@Override
-	public List<AuthRequest> findAll() {
-		return null;
 	}
 	
 	private boolean existUserByEmail(String email) {
