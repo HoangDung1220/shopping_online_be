@@ -4,20 +4,31 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.shoppingonline.base.BaseService;
+
 @Service
-public class ExampleService {
+public class ExampleService extends BaseService<ExampleModel, ExampleModel>{
 	
 	private ExampleRepository exampleRepository;
 	
 	public ExampleService(ExampleRepository exampleRepository) {
 		this.exampleRepository = exampleRepository;
 	}
-	
-	public List<ExampleModel> getAllExamples(){
-		return exampleRepository.findAll();
+
+	@Override
+	public boolean prepare(ExampleModel model, ExampleModel model1) {
+		// TODO Auto-generated method stub
+		return false;
 	}
-	
-	public ExampleModel getById(Long id){
-		return exampleRepository.getOne(id);
+
+	@Override
+	public void save(ExampleModel model) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<ExampleModel> findAll() {
+		return exampleRepository.findAll();
 	}
 }

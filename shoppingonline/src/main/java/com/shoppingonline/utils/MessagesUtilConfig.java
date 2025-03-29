@@ -1,4 +1,4 @@
-package com.shoppingonline.common.message;
+package com.shoppingonline.utils;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +11,7 @@ public class MessagesUtilConfig {
 	@Bean
 	public MessageSource messageSource() {
 		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("classpath:messages"); // Chỉ cần chỉ định "messages" (không cần _en hoặc _vi)
+        messageSource.setBasename("classpath:messages"); 
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
 	}
